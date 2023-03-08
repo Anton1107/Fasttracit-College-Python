@@ -1,0 +1,445 @@
+"""Task 1:Fix the below code such that:
+The maximum number of attempts is 3 for a user to input a value from the keyboard
+If the user input is ‘yes’, the while loop will exit 
+If the user input is ‘no’, the loop will continue """
+attempts = 0
+while True :
+    response = input("Do you want to quit? (yes/no): ")
+    attempts += 1
+    if attempts >= 3:
+        print("You reach maximum number of attempts!")
+    elif response == "no":
+        input("What you want to do next? :")
+    else:
+        print("Exiting after", attempts, "attempts")
+        break
+#Task 2: Use a while loop to print a triangle of asterisks, given a certain height variable.
+#Example: for height=5, the below triangle gets printed:
+height = 5
+row = 0
+while row < height:
+    space = height-row-1
+    while space > 0:
+        print(end=" ")
+        space = space-1
+    star = row+1
+    while star > 0:
+        print("*" ,end=" ")
+        star = star-1
+    row = row+1
+    print()
+#Task 3:  Write a solution which will find all the numbers between 100 and 300
+#(both included) such that each digit of the number is an even number.
+items = []
+for i in range(100, 301):
+    s = str(i)
+    if (int(s[0]) % 2 == 0) and (int(s[1]) % 2 == 0) and (int(s[2]) % 2 == 0):
+        items.append(s)
+print(", ".join(items))
+#Task 4: Use enumerate to modify the list students,
+# so that each element contains the name and the corresponding score of the student.
+students = ["Barney Stinson", "Robin Scherbatsky", "Ted Mosby",   "Lily Aldrin", "Marshall Eriksen"]
+scores = [8.8, 9.8, 7.2, 8.0, 9.6]
+for i, (students, scores) in enumerate(zip(students, scores)):
+    print(i, students, scores)
+#Task 5: Write a program sequence that prints out the first 20 Fibonacci numbers.
+#(The Fibonacci sequence starts with 0,1 and next number is the sum of the two previous numbers: see the Lab3 slides )
+def FibonacciNumbers(n):
+    f1 = 0
+    f2 = 1
+    if (n < 1):
+        return
+    print(f1, end=" ")
+    for x in range(1, n):
+        print(f2, end=" ")
+        next = f1 + f2
+        f1 = f2
+        f2 = next
+FibonacciNumbers(20)
+
+-------------------------------------------------------------------------------lab2
+
+#Task 1:
+'''
+message = "This is a string"
+for c in message:
+   print(c)
+'''
+
+message = "This is a string"
+while True:
+    for c in message:
+        print(c)
+    break
+
+# Task 2:
+'''
+One illusion may beget another.
+For example, since 0.1 is not exactly 1/10, summing three values of 0.1 may not yield exactly 0.3, either.
+'''
+# Possible fix
+round(.1 + .1 + .1) == round(.3)
+
+#Task 3:
+start = 1999
+end = 2100
+
+list(range(start + (4 - start % 4), end + 1, 4))
+while start < end:
+    if start % 4 == 0:
+        if start % 100 == 0:
+            if start % 400 == 0:
+                print("{} is a leap year".format(start))
+        else:
+            print("{} is a leap year".format(start))
+    start += 1
+
+#Task 4:
+import random
+
+results = {
+    'heads': 0,
+    'tails': 0,
+}
+sides = list(results.keys())
+
+
+for i in range(50):
+    results[random.choice(sides)] += 1
+
+print('Heads:', results['heads']*100/50)
+print('Tails:', results['tails']*100/50)
+
+--------------------------------------------------------------------------------------lab3
+
+"""Task 1:Fix the below code such that:
+The maximum number of attempts is 3 for a user to input a value from the keyboard
+If the user input is ‘yes’, the while loop will exit 
+If the user input is ‘no’, the loop will continue """
+attempts = 0
+while True :
+    response = input("Do you want to quit? (yes/no): ")
+    attempts += 1
+    if attempts >= 3:
+        print("You reach maximum number of attempts!")
+    elif response == "no":
+        input("What you want to do next? :")
+    else:
+        print("Exiting after", attempts, "attempts")
+        break
+#Task 2: Use a while loop to print a triangle of asterisks, given a certain height variable.
+#Example: for height=5, the below triangle gets printed:
+height = 5
+row = 0
+while row < height:
+    space = height-row-1
+    while space > 0:
+        print(end=" ")
+        space = space-1
+    star = row+1
+    while star > 0:
+        print("*" ,end=" ")
+        star = star-1
+    row = row+1
+    print()
+#Task 3:  Write a solution which will find all the numbers between 100 and 300
+#(both included) such that each digit of the number is an even number.
+items = []
+for i in range(100, 301):
+    s = str(i)
+    if (int(s[0]) % 2 == 0) and (int(s[1]) % 2 == 0) and (int(s[2]) % 2 == 0):
+        items.append(s)
+print(", ".join(items))
+#Task 4: Use enumerate to modify the list students,
+# so that each element contains the name and the corresponding score of the student.
+students = ["Barney Stinson", "Robin Scherbatsky", "Ted Mosby",   "Lily Aldrin", "Marshall Eriksen"]
+scores = [8.8, 9.8, 7.2, 8.0, 9.6]
+for i, (students, scores) in enumerate(zip(students, scores)):
+    print(i, students, scores)
+#Task 5: Write a program sequence that prints out the first 20 Fibonacci numbers.
+#(The Fibonacci sequence starts with 0,1 and next number is the sum of the two previous numbers: see the Lab3 slides )
+def FibonacciNumbers(n):
+    f1 = 0
+    f2 = 1
+    if (n < 1):
+        return
+    print(f1, end=" ")
+    for x in range(1, n):
+        print(f2, end=" ")
+        next = f1 + f2
+        f1 = f2
+        f2 = next
+FibonacciNumbers(20)
+
+--------------------------------------------------------------------------------------------lab4
+
+
+# Task 1: What does the below function print? == 15!
+def outer_fun(a, b):
+    def inner_fun():
+        return a + b
+    return inner_fun
+
+result = outer_fun(5, 10)()
+print(result)
+
+
+# Task 2: Write a function that converts Celsius temperatures to Fahrenheit degrees.
+def celsius_to_fahrenheit(*args):
+    fahrenheit = []
+    for f in args:
+        fahrenheit = C * 1.8 + 32
+    return fahrenheit
+
+celsius_to_fahrenheit(15,21,25,26,32)
+celsius_to_fahrenheit(12,23)
+
+"""
+Task 3: George makes a bank deposit. What is the amount George has in the bank
+after 5 years with an interest rate of 3.5% ? And after 7 years and an interest of 4.1%?
+Write a function that returns the future amount given a specified original deposit as
+argument, rate of interest and a number of years.
+"""
+def future_amount(original, years=7, rate=3.5):
+    amount = original * ((1 + (0.01 * rate)) ** years)
+    return amount
+
+print(future_amount(7000))
+print(future_amount(7000, rate=4.1, years=5))
+
+
+#Task 4: Modify the Task 3 function to calculate multiple future amounts and
+#return the future amounts as a list.
+
+def future_amount(*original, years=7, rate=3.5):
+    amount = []
+    for i in original:
+        amount += [round(i * ((1 + (0.01 * rate)) ** years), 2)]
+        print(amount)
+    return amount
+
+future_amount(1000, 5000, 7000, 9000, rate=4.1, years=5)
+future_amount(3000, 2000, 4000, 5000, 11000)
+future_amount(7000, rate=4.1, years=5)
+
+"""
+Task 5: Modify the factorial function in the Lab 4 slides so that the
+RecursionError: maximum recursion depth exceeded is raised.
+Hint: the if condition is never met.
+
+"""
+def factorial(number):
+    if number == 100:
+       return 1
+    else:
+       return number * factorial(number - 1)
+n = 5
+print(f"Factorial of {n} number is: {factorial(n)}")
+
+
+--------------------------------------------------------------------------------------------lab5
+
+#Task 1: Given the tuple
+tuple1 = ('cluj-Napoca','Bucuresti','spa','Oradea','iasi','Arad')
+print(sorted(tuple1, key=str.lower))
+list1 = list(tuple1)
+list1.remove('Oradea')
+tuple1 = tuple(list1)
+print(tuple1)
+
+#Task 2: Swapping elements in a list
+#result = swap([("d", 3), ("b", 1), ("c", 2), ("a", 0)], 0, 3)
+
+#Task 3: Create a list with 3 people's names in it.
+listt = ["Alex", "Matt", "Dan"]
+listt1 = listt
+listt1.extend(["Anton", "Tom"])
+print('This is the original list.', listt)
+print('That this is the copied list', listt1)
+
+#Task 4: The following code results in error:
+example_list = [1, 2, 3]
+example_list.append(4)
+def append_list(new_element):
+    example_list += [new_element]
+
+print(example_list)
+
+#Task 5: Pitfall: Modifying a list while iterating over it
+#The following snippet results in IndexError:
+def remove_articles(phrase):
+    articles = ['an', 'a', 'the']
+    rest = []
+    for word in phrase.split():
+        if word not in articles:
+            rest.append(word)
+    return ' '.join(rest)
+string = """
+Deleting an item from a list while iterating over it,
+is a Python problem that is well known and a common
+mistake for the beginners."""
+
+
+---------------------------------------------------------------------------------------------lab6
+
+
+#Task 1:
+People = {
+    'person1': {
+        'first_name': 'eric',
+        'last_name': 'matthes',
+        'age': 43,
+        'city': 'sitka',
+        },
+    'person2': {
+        'first_name': 'Ted',
+        'last_name': 'Fraed',
+        'age': 33,
+        'city': 'Cluj'
+},
+    'person3': {
+        'first_name': 'Addy',
+        'last_name': 'Leks',
+        'age': 27,
+        'city': 'Kiev'
+}
+    }
+
+for person, person_info in People.items():
+    name = person_info['first_name'].title()
+    last_name = person_info['last_name'].title()
+    age = person_info['age']
+    city = person_info['city'].title()
+
+    print("\n" + name.title() + " " + last_name + ".")
+    print("Is " + str(age) + " ears old.")
+    print("Is living in " + city + "!")
+
+#Task 2:
+pets = []
+pet = {
+    'Owner_name': 'Sam',
+    'animal_type': 'Python',
+    'Pet_name': 'Lord',
+    'age': 4,
+}
+pets.append(pet)
+pet = {
+    'Owner_name': 'Ted',
+    'animal_type': 'Dog',
+    'Pet_name': 'Fraed',
+    'age': 3,
+}
+pets.append(pet)
+pet = {
+    'Owner_name': 'Addy',
+    'animal_type': 'Cat',
+    'Pet_name': 'Leks',
+    'age': 7,
+}
+pets.append(pet)
+
+for pet in pets:
+    print("\n Information of " + pet['Owner_name'].title() + " Pet" + ":")
+    for key, value in pet.items():
+        print("\t" + key + ": " + str(value))
+
+#Task 3:
+favorite_places = {
+    'Anton': ["Dubai", "Rome"],
+    'tom': ["London", "Paris", "San trope"],
+    'Zack': ["Veana", "Berlin"],
+    }
+
+for name, citys in favorite_places.items():
+    print("\n" + name.title() + " Favorite place to go is:")
+    for city in citys:
+        print(city)
+
+#Task 4:
+cities = {
+    'rome': {
+        'country': 'italy',
+        'population': 2873000,
+        'fact': 'Modern Rome has 280 fountains and more than 900 churches.',
+        },
+    'london': {
+        'country': 'England',
+        'population': 8982000,
+        'fact': 'London is actually the smallest city in England.',
+        },
+    'berlin': {
+        'country': 'Germany',
+        'population': 3645000,
+        'fact': 'Berlin is nine times bigger than Paris.',
+        }
+    }
+
+for city, city_info in cities.items():
+    country = city_info['country'].title()
+    population = city_info['population']
+    fact = city_info['fact']
+
+    print("\n" + city.title() + " is in " + country + ".")
+    print("It has population of about " + str(population) + ".")
+    print(fact)
+# Task 5:
+favorite_places = {
+    'Anton': ["Dubai", "Rome"],
+    'tom': ["London", "Paris", "San trope"],
+    'Zack': ["Veana", "Berlin"],
+    }
+
+favorite_places['tad'] = "Kiev", "Odesa"
+favorite_places['Anton'] = "Maldives", "Cosovo"
+for name, citys in favorite_places.items():
+    print("\n" + name.title() + " Favorite place to go is:")
+    for city in citys:
+        print(city)
+
+
+-------------------------------------------------------------------------lab7
+
+
+#Task 1:
+strin = 'Got'
+for i in range(10):
+    print(strin)
+#Task 2:
+titles = ['Creature of Habit', 'Crewel Fate', 'Sharks On a Plane']
+plots = ['A nun turns into a monster', 'A haunted yarn shop', 'Check your exits']
+movies = dict(zip(titles, plots))
+print(movies)
+#Task 3:
+def get_odds():
+    a_list = [num for num in range(10) if num % 2 == 1]
+    return a_list[2]
+print(get_odds())
+#Task 4:
+def decorate_it(func):
+    def test(*args, **kwargs):
+        print("Start")
+        result = func(*args, **kwargs)
+        print("End")
+        return result * result
+    return test
+#Task 5:
+import timeit
+def my_range(first=0, last=10, step=1):
+    number = first
+    while number < last:
+        yield number
+        number = number + step
+
+start = timeit.default_timer()
+print("Start time :", start)
+list = [x for x in my_range(1, 100, 1)]
+print('Sum', sum(list))
+print('It took : ', timeit.default_timer() - start)
+
+print('start time is:', start)
+list = [x for x in my_range(1, 100, 1)]
+print('Sum', sum(list))
+print('It took :', timeit.default_timer() - start)
+
+print(sum(my_range(1, 1000000)))
